@@ -37,8 +37,16 @@ This is a `helm` release for Project [Eirini](https://code.cloudfoundry.org/eiri
 1. Install CF:
 
     ```bash
-    helm install eirini/cf --namespace scf --name scf --set "secrets.UAA_CA_CERT=${CA_CERT}" --values <your-values.yaml>
+    helm install eirini/cf --namespace scf --name scf \
+    --set "secrets.UAA_CA_CERT=${CA_CERT}" \
+    --set "eirini.secrets.BITS_TLS_CRT=${BITS_TLS_CRT}" \
+    --set "eirini.secrets.BITS_TLS_KEY=${BITS_TLS_KEY}" \
+    --values <your-values.yaml>
     ```
+
+    where BITS_TLS_CERT and BITS_TLS_KEY should trusted certificates for the bits service. 
+    Bits service hostname is different depending and equal to `registry_endpoint` in [`bits` ConfigMap](https://github.com/cloudfoundry-incubator/eirini-release/blob/master/helm/eirini/templates/bits.yaml).
+    Check [the Kubernetes documentation](https://kubernetes.io/docs/concepts/containers/images/#configuring-nodes-to-authenticate-to-a-private-registry) for more details how to make Docker daemon trust bits service registry.    
 
 1. Use the following command to verify that every CF control plane pod is `running` and `ready`:
 
@@ -71,18 +79,6 @@ In a production settings ideally there should be existing storage classes that w
 In IBM Kubernetes Service, it is recommended to use storage block storage class. See more how to enable it in [IBM Cloud documentation](https://console.bluemix.net/docs/containers/cs_storage_block.html#block_storage)
 
 Additional details about deploying Eirini can be found in the `contrib` folder.
-
-### Certificates
-
-Eirini generates certificates for all your internal services to work. However,
-Containerd requires trusted certificate. You can manually change the certificate
-that is used by modifying `private-registry-cert` secret in your `scf`
-namespace and restarting bits pod.
-
-#### IBMCloud Kubernetes Service (IKS)
-
-IKS provides ingress with signed certificate. The certificate is stored in a secret in `default` namespace and has the same name as your cluster. 
-
 It is recommended to deploy Eirini with ingress and use that certificate in IKS.
 
 ### Service Account
