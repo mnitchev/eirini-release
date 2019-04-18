@@ -17,8 +17,8 @@ kube:
 
   registry:
     hostname: "docker.io"
-    username: ""
-    password: ""
+    username: "eiriniuser"
+    password: "4Gu7%5H50*pzzjp3IffAmv0MnV*&yH"
   organization: "eirinicf"
   auth: "rbac"
 config:
@@ -809,7 +809,7 @@ env:
   DEFAULT_APP_SSH_ACCESS: "true"
 
   # The default stack to use if no custom stack is specified by an app.
-  DEFAULT_STACK: "cflinuxfs2"
+  DEFAULT_STACK: "opensuse42"
 
   # The container disk capacity the cell should manage. If this capacity is
   # larger than the actual disk quota of the cell component, over-provisioning
@@ -1430,7 +1430,7 @@ sizing:
 
     # The diego-api instance group can scale between 0 and 3 instances.
     # For high availability it needs at least 2 instances.
-    count: 1
+    count: 0
 
     # Unit [millicore]
     cpu:
@@ -1462,7 +1462,7 @@ sizing:
 
     # The diego-brain instance group can scale between 0 and 3 instances.
     # For high availability it needs at least 2 instances.
-    count: 1
+    count: 0
 
     # Unit [millicore]
     cpu:
@@ -1498,7 +1498,7 @@ sizing:
 
     # The diego-cell instance group can scale between 0 and 254 instances.
     # For high availability it needs at least 3 instances.
-    count: 1
+    count: 0
 
     # Unit [millicore]
     cpu:
@@ -1530,7 +1530,7 @@ sizing:
 
     # The diego-ssh instance group can scale between 0 and 3 instances.
     # For high availability it needs at least 2 instances.
-    count: 1
+    count: 0
 
     # Unit [millicore]
     cpu:
