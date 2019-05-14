@@ -420,7 +420,7 @@ spec:
           value: {{ .Values.kube.limits.nproc.hard | quote }}
         - name: "VCAP_SOFT_NPROC"
           value: {{ .Values.kube.limits.nproc.soft | quote }}
-        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-diego-api:2139aa617b3bb2040380ae4917fb5bc905128d17"
+        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-diego-api:09988c532aa579c81d97f3aa460f4b2715bd314e"
         lifecycle:
           preStop:
             exec:

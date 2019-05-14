@@ -440,7 +440,7 @@ spec:
           value: {{ .Values.kube.limits.nproc.hard | quote }}
         - name: "VCAP_SOFT_NPROC"
           value: {{ .Values.kube.limits.nproc.soft | quote }}
-        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-diego-ssh:9c4ef33bae157903d9599dbbfaeed12cc5f0507b"
+        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-diego-ssh:45d42ebaae830d5c0f9fbc0b3d221c93293d2329"
         lifecycle:
           preStop:
             exec:

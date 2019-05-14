@@ -286,7 +286,7 @@ spec:
           value: {{ .Values.kube.limits.nproc.hard | quote }}
         - name: "VCAP_SOFT_NPROC"
           value: {{ .Values.kube.limits.nproc.soft | quote }}
-        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-nfs-broker:e1ccbdbd8dd7ba9153722e175ea480a6cf065e18"
+        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-nfs-broker:0caf843dbfc0078081ef165669cc4e02d0c3eb8f"
         lifecycle:
           preStop:
             exec:
